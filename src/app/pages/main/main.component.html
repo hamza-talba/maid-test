@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-grid-list cols="1" rowHeight="250px" gutterSize="10">
+    <mat-grid-tile *ngFor="let d of data$ | async; let i = index">
+      <app-card [data]="d">
+        <img [src]="d.avatar" mat-card-avatar class="avatar" />
+        <div class="actions">
+          <mat-card-actions>
+            <div class="row justify-content-center">
+              <button
+                mat-stroked-button
+                color="accent"
+                [routerLink]="'/' + d.id"
+              >
+                Details
+              </button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-paginator
+    [length]="pagination.total"
+    [pageSize]="pagination.per_page"
+    [pageSizeOptions]="[6, 100]"
+    aria-label="Select page"
+    (page)="pageEvent = paginate($event)"
+  >
+  </mat-paginator>
+</div>

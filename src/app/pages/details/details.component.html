@@ -1,0 +1,15 @@
+<div class="container">
+  <button mat-stroked-button color="primary" routerLink="/">
+    <mat-icon aria-hidden="false" aria-label="arrow_back">arrow_back</mat-icon>
+    Back
+  </button>
+  <app-card [data]="user" *ngIf="user?.id">
+    <div class="row justify-content-center image">
+      <img
+        mat-card-md-image
+        [src]="user?.avatar"
+        [alt]="user?.first_name + 'image'"
+      />
+    </div>
+  </app-card>
+</div>

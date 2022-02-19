@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-header>
+    <ng-content select=".avatar"></ng-content>
+    <mat-card-title>
+      {{ data?.first_name + " " + data?.last_name }}</mat-card-title
+    >
+    <mat-card-subtitle>
+      <div class="row">
+        <mat-icon color="accent">tag</mat-icon>
+        <span class="texts">{{ data?.id }}</span>
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <ng-content select=".image"> </ng-content>
+    <div class="row justify-content-center">
+      <mat-icon color="accent">email</mat-icon>
+      <span class="texts">
+        {{ data?.email }}
+      </span>
+    </div>
+  </mat-card-content>
+  <ng-content select=".actions"></ng-content>
+</mat-card>

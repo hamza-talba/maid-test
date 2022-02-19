@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  <span>Maids.cc</span>
+  <span class="spacer"></span>
+  <mat-form-field appearance="legacy">
+    <input
+      matInput
+      aria-label="Search"
+      placeholder="Search By Id"
+      [matAutocomplete]="auto"
+      [formControl]="stateCtrl"
+    />
+    <button
+      *ngIf="stateCtrl.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clear()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngIf="filterdUsers?.id; else notFound"
+        [value]="filterdUsers.id"
+        [routerLink]="['/', filterdUsers.id]"
+      >
+        <div class="row justify-content-around">
+          <img
+            class="example-option-img"
+            aria-hidden
+            [src]="filterdUsers.avatar"
+            height="35"
+          />
+          <span>{{
+            filterdUsers.first_name + " " + filterdUsers.last_name
+          }}</span>
+        </div>
+      </mat-option>
+      <ng-template #notFound>
+        <mat-option>
+          <div class="row justify-content-center">
+            <mat-icon color="warn" aria-hidden="false" aria-label="warning"
+              >warning</mat-icon
+            >
+            <span class="texts"> Not Found </span>
+          </div>
+        </mat-option>
+      </ng-template>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-toolbar>
